@@ -1,0 +1,74 @@
+$tablet: 768px;
+$mobile: 425px;
+$small-phone: 300px;
+$small-desktop: 1024px;
+$large-desktop: 1440px;
+$ultra-large-desktop: 2560px;
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+      @content;
+  }
+}
+@mixin small-phone {
+  @media (min-width: #{$small-phone}) {
+      @content;
+  }
+}
+@mixin mobile {
+  @media (min-width: #{$mobile}) {
+      @content;
+  }
+}
+@mixin small-desktop {
+  @media (min-width: #{$small-desktop}) {
+      @content;
+  }
+}
+@mixin large-desktop {
+  @media (min-width: #{$large-desktop}) {
+      @content;
+  }
+}
+@mixin ultra-large-desktop {
+  @media (min-width: #{$ultra-large-desktop}) {
+      @content;
+  }
+}
+
+@include mobile() {
+  .global-admin-content {
+    padding: 2rem 3rem !important;  
+  } 
+}
+@include small-phone {
+  .global-admin-content {
+    padding: 2rem 1rem !important;  
+  } 
+}
+@include tablet() {
+  .global-admin-content {
+    padding: 2rem 6rem !important;  
+  } 
+}
+@include small-desktop() {
+  .global-admin-content {
+    padding: 2rem 9rem !important;  
+  } 
+}
+@include large-desktop() {
+  .global-admin-content {
+    padding: 2rem 12rem !important;  
+  } 
+}
+
+@include ultra-large-desktop() {
+  .global-admin-content {
+    padding: 2rem 16rem !important;  
+  } 
+}
+
+  @import "src/theme/theme-variables";
+
+.global-admin-content {
+
+}

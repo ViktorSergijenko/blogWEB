@@ -1,0 +1,34 @@
+<div fxFlex>
+  <mat-sidenav-container fxFill>
+    <mat-sidenav #sidenav mode="over" ngClass.gt-sm="has-border">
+      <nav>
+        <mat-list *ngIf="userRole === 'Global Admin'">
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/global/dashboard" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>Dashboard</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/global/regions" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>Regions</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/global/user-table" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>User table</span>
+          </a>
+          <mat-divider></mat-divider>
+        </mat-list>
+        <mat-list *ngIf="userRole === 'Manager'">
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/manager/dashboard" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>Dashboard</span>
+          </a>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-header [sidenav]="sidenav"></app-header>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

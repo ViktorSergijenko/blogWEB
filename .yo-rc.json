@@ -1,0 +1,31 @@
+{
+  "generator-ngx-rocket": {
+    "version": "7.1.0",
+    "props": {
+      "location": "path",
+      "strict": false,
+      "skipInstall": false,
+      "skipQuickstart": false,
+      "initGit": true,
+      "appName": "StorageWeb",
+      "target": [
+        "web"
+      ],
+      "pwa": false,
+      "ui": "material",
+      "layout": "simple",
+      "auth": true,
+      "lazy": false,
+      "angulartics": false,
+      "tools": [
+        "prettier",
+        "hads"
+      ],
+      "utility": [],
+      "projectName": "storage-web",
+      "packageManager": "npm",
+      "mobile": [],
+      "desktop": []
+    }
+  }
+}

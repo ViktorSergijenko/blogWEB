@@ -1,0 +1,25 @@
+
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+.spinner-block {
+  display: flex;
+  justify-content: center;
+    padding: 6rem 7rem !important;
+}
+
+.post-block {
+  display: flex;
+  flex-basis: 100%;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.global-admin-content {
+  padding: 3rem 2rem !important;
+}
+body {
+  padding: 3rem 2rem !important;
+}
