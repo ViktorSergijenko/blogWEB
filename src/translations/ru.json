@@ -28,5 +28,7 @@
   "Regular Employee": "Обычный работник",
   "Add new region": "Добавить новый регион",
   "Close": "Закрыть",
-  "Something went try to reload page":"Что то пошло не так, перезагрузите страницу"
+  "Something went try to reload page":"Что то пошло не так, перезагрузите страницу",
+  "Go as a guest":"Зайти в качестве гостя",
+  "Register": "Зарегистрироваться"
 }

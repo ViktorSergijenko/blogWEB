@@ -15,6 +15,7 @@ export class AuthenticationGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.credentialsService.isAuthenticated()) {
       let role = route.data['permittedRole'] as string;
+      console.log(role);
       if (role) {
         if (this.credentialsService.credentials.roleName === role) {
           return true;

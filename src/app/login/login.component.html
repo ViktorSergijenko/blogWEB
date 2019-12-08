@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="login-container" fxLayout="row" fxLayoutAlign="center">
-    <mat-card fxFlex="90%" fxFlex.sm="66%" fxFlex.md="50%" fxFlex.gt-md="33%" class="login-box">
+    <mat-card *ngIf="!registrationFormVisability" fxFlex="90%" fxFlex.sm="66%" fxFlex.md="50%" fxFlex.gt-md="33%" class="login-box">
       <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
         <div class="login-error" [hidden]="!error || isLoading">
           {{ 'Username or password incorrect.' | translate }}
@@ -60,8 +60,158 @@
             <app-loader class="inline-loader" [isLoading]="isLoading"></app-loader>
             <span translate>Go as a guest</span>
           </button>
+          <button mat-raised-button color="primary" (click)="openRegistrationForm()">
+            <app-loader class="inline-loader" [isLoading]="isLoading"></app-loader>
+            <span translate>Register</span>
+          </button>
         </div>
+        {{loginForm.valid | json}}
       </form>
     </mat-card>
+  </div>
+  <div class="login-container" fxLayout="row" fxLayoutAlign="center">
+      <mat-card *ngIf="registrationFormVisability" fxFlex="90%" fxFlex.sm="66%" fxFlex.md="50%" fxFlex.gt-md="33%" class="login-box">
+          <form (ngSubmit)="register()" [formGroup]="registrationForm" novalidate>
+            <div class="login-error" [hidden]="!error || isLoading">
+              {{ 'Username or password incorrect.' | translate }}
+            </div>
+            <br />
+            <div class="login-fields" fxLayout="column">
+                <mat-form-field [hideRequiredMarker]="true">
+                    <input
+                      type="text"
+                      matInput
+                      formControlName="firstName"
+                      autocomplete="firstName"
+                      [placeholder]="'First name' | translate"
+                      required
+                    />
+                    <mat-error *ngIf="registrationForm.controls.firstName.invalid && registrationForm.controls.firstName.touched">
+                      <span translate>First name is required</span>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field [hideRequiredMarker]="true">
+                      <input
+                        type="text"
+                        matInput
+                        formControlName="lastName"
+                        autocomplete="lastName"
+                        [placeholder]="'Last name' | translate"
+                        required
+                      />
+                      <mat-error *ngIf="registrationForm.controls.lastName.invalid && registrationForm.controls.lastName.touched">
+                        <span translate>Last name is required</span>
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field [hideRequiredMarker]="true">
+                        <input
+                          type="text"
+                          matInput
+                          formControlName="age"
+                          autocomplete="age"
+                          [placeholder]="'Age' | translate"
+                          required
+                        />
+                        <mat-error *ngIf="registrationForm.controls.age.invalid && registrationForm.controls.age.touched">
+                          <span translate>Age is required</span>
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field [hideRequiredMarker]="true">
+                          <input
+                            type="text"
+                            matInput
+                            formControlName="country"
+                            autocomplete="country"
+                            [placeholder]="'Country' | translate"
+                            required
+                          />
+                          <mat-error *ngIf="registrationForm.controls.country.invalid && registrationForm.controls.country.touched">
+                            <span translate>Country is required</span>
+                          </mat-error>
+                        </mat-form-field>
+                        <mat-form-field [hideRequiredMarker]="true">
+                            <input
+                              type="text"
+                              matInput
+                              formControlName="city"
+                              autocomplete="city"
+                              [placeholder]="'City' | translate"
+                              required
+                            />
+                            <mat-error *ngIf="registrationForm.controls.city.invalid && registrationForm.controls.city.touched">
+                              <span translate>City is required</span>
+                            </mat-error>
+                          </mat-form-field>
+                              <input
+                                accept="image/*"
+                                type="file"
+                                id="image"
+                                autocomplete="avatarImageBase64"
+                                [placeholder]="'Avatar image' | translate"
+                                (change)="onFileSelected($event)"
+                              />
+              <mat-form-field [hideRequiredMarker]="true">
+                <input
+                  type="text"
+                  matInput
+                  formControlName="email"
+                  autocomplete="email"
+                  [placeholder]="'Email' | translate"
+                  required
+                />
+                <mat-error *ngIf="registrationForm.controls.email.invalid && registrationForm.controls.email.touched">
+                  <span translate>Email is required</span>
+                </mat-error>
+                <mat-error *ngIf="registrationForm.controls.email.errors['email'] && registrationForm.controls.email.touched">
+                  <span translate>Email must be a valid email address</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field [hideRequiredMarker]="true">
+                  <input
+                    type="text"
+                    matInput
+                    formControlName="userName"
+                    autocomplete="userName"
+                    [placeholder]="'Username' | translate"
+                    required
+                  />
+                  <mat-error *ngIf="registrationForm.controls.userName.invalid && registrationForm.controls.userName.touched">
+                    <span translate>Username is required</span>
+                  </mat-error>
+                </mat-form-field>
+              <mat-form-field [hideRequiredMarker]="true">
+                <input
+                  type="password"
+                  matInput
+                  formControlName="password"
+                  autocomplete="current-password"
+                  [placeholder]="'Password' | translate"
+                  required
+                />
+                <mat-error *ngIf="registrationForm.controls.password.invalid && registrationForm.controls.password.touched">
+                  <span translate>Password is required</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field [hideRequiredMarker]="true">
+                <input
+                  type="password"
+                  matInput
+                  formControlName="confirmPassword"
+                  autocomplete="current-password"
+                  [placeholder]="'Repeat password' | translate"
+                  required
+                />
+              </mat-form-field>
+              <button mat-raised-button color="primary">
+                <app-loader class="inline-loader" [isLoading]="isLoading" (click)="openLoginForm()"></app-loader>
+                <span translate>Login form</span>
+              </button>
+              <button mat-raised-button color="primary" (click)="register()" >
+                <app-loader class="inline-loader" [isLoading]="isLoading"></app-loader>
+                <span translate>Register</span>
+              </button>
+            </div>
+          </form>
+        </mat-card>
   </div>
 </div>

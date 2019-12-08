@@ -28,5 +28,8 @@
   "Regular Employee": "Regular Employee",
   "Add new region": "Add new region",
   "Close": "Close",
-  "Something went try to reload page":"Something went try to reload page"
+  "Something went try to reload page":"Something went try to reload page",
+  "Go as a guest":"Go as a guest",
+  "Register": "Register"
+  
 }

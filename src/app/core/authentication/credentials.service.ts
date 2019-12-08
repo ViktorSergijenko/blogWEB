@@ -52,7 +52,6 @@ export class CredentialsService {
    */
   setCredentials(credentials?: Credentials, remember?: boolean) {
     this._credentials = credentials || null;
-
     if (credentials) {
       const storage = remember ? localStorage : sessionStorage;
       storage.setItem(credentialsKey, JSON.stringify(credentials));

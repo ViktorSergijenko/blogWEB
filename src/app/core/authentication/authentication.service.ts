@@ -4,9 +4,10 @@ import { Observable, of } from 'rxjs';
 import { Credentials, CredentialsService } from './credentials.service';
 import { environment } from '@env/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '@app/models/user.model';
 
-export interface LoginContext {
-  username: string;
+export class LoginContext {
+  email: string;
   password: string;
   remember?: boolean;
 }
@@ -37,6 +38,11 @@ export class AuthenticationService {
   login(context: LoginContext): Observable<Credentials> {
     var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
     return this.http.post<Credentials>(this.getEndpointUrl() + 'Login', context, { headers: reqHeader });
+  }
+
+  register(newUser: User): Observable<User> {
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.post<User>(this.getEndpointUrl() + 'register', newUser, { headers: reqHeader });
   }
 
   getUserProfile(): Observable<Credentials> {

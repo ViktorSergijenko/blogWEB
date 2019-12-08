@@ -5,7 +5,7 @@ import { Comment } from './comment.model';
 
 export class User extends BaseEntity {
     fullName: string;
-    nickName: string;
+    userName: string;
     firstName: string;
     lastName: string;
     age: string;
@@ -16,5 +16,7 @@ export class User extends BaseEntity {
     avatarImageBase64: string;
     posts: Post[];
     likes: Like[];
+    email: string;
+    password: string;
     comments: Comment[];
 }
