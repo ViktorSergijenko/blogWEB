@@ -1,0 +1,39 @@
+
+<h1 mat-dialog-title>Hi {{data | json}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+      <form [formGroup]="postForm" novalidate>
+      <div class="inputs">
+        <mat-form-field>
+          <input 
+          matInput
+          formControlName="title"
+          autocomplete="title"
+          [placeholder]="'Title' | translate"
+          required>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <textarea matInput
+          formControlName="text"
+          autocomplete="content"
+          [placeholder]="'Content' | translate"
+          required>></textarea>
+        </mat-form-field>
+      
+        <input
+        accept="image/*"
+        type="file"
+        id="image"
+        autocomplete="imageBase64"
+        [placeholder]="'Content image' | translate"
+        (change)="onFileSelected($event)"
+      />
+      </div>
+      {{postForm.value | json}}
+    </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button color="primary" (click)="accept()" cdkFocusInitial>Ok</button>
+</div>

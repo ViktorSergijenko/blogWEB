@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
   goAsGuest() {
     this.cred = new Credentials();
-    this.cred.roleName = 'guest';
+    this.cred.roleName = 'Guest';
     this.credentialsService.setCredentials(this.cred, this.loginForm.value.remember);
     this.router.navigate([this.route.snapshot.queryParams.redirect || '/guest'], { replaceUrl: true });
   }
@@ -102,9 +102,9 @@ export class LoginComponent implements OnInit, OnDestroy {
                   this.router.navigate([this.route.snapshot.queryParams.redirect || '/moderator'], { replaceUrl: true });
                   break;
                   case 'RegularUser':
-                  this.router.navigate([this.route.snapshot.queryParams.redirect || '/guest'], { replaceUrl: true });
+                  this.router.navigate([this.route.snapshot.queryParams.redirect || '/regular-user'], { replaceUrl: true });
                   break;
-                  case 'guest':
+                  case 'Guest':
                   this.router.navigate([this.route.snapshot.queryParams.redirect || '/guest'], { replaceUrl: true });
                   break;
                 default:

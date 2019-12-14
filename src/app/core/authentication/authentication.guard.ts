@@ -16,6 +16,7 @@ export class AuthenticationGuard implements CanActivate {
     if (this.credentialsService.isAuthenticated()) {
       let role = route.data['permittedRole'] as string;
       console.log(role);
+      console.log(this.credentialsService.credentials.roleName);
       if (role) {
         if (this.credentialsService.credentials.roleName === role) {
           return true;

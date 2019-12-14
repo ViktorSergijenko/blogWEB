@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { PostModalComponent } from './post-modal-window/post-modal/post-modal.component';
 import { Post } from '@app/models/post.model';
+import { ActivatedRoute } from '@angular/router';
 import { PostService } from '@app/services/post-service';
-import { finalize } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
-import { MatDialog } from '@angular/material/dialog';
+import { finalize } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-guest-dashboard',
-  templateUrl: './guest-dashboard.component.html',
-  styleUrls: ['./guest-dashboard.component.scss']
+  selector: 'app-regular-user-dashboard',
+  templateUrl: './regular-user-dashboard.component.html',
+  styleUrls: ['./regular-user-dashboard.component.scss']
 })
-export class GuestDashboardComponent implements OnInit {
+export class RegularUserDashboardComponent implements OnInit {
+
   sortOption: string;
   postList: Post[] = [];
+  numberito: number = 1;
   isLoading: boolean;
   postsLoadingError: boolean;
   constructor(
@@ -31,6 +33,18 @@ export class GuestDashboardComponent implements OnInit {
     this.getPosts();
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PostModalComponent, {
+      width: '700px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      var a = result;
+      console.log(result);
+    });
+  }
+
   private getPosts() {
     this.isLoading = true;
     this.postService.getPosts()
@@ -44,9 +58,7 @@ export class GuestDashboardComponent implements OnInit {
         this.postsLoadingError = true;
         this._snackBar.open(this.translate.instant('Something went try to reload page'), this.translate.instant('Close'), {
           duration: 4000,
-        });
       });
+    });
   }
-
-
 }

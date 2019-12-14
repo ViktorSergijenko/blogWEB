@@ -19,6 +19,7 @@ import { AuthInterceptor } from './core/authentication/authentication.intercepto
 import { ModeratorModule } from './moderator/moderator.module';
 import { MatTableModule } from '@angular/material/table';
 import { GuestModule } from './guest/guest.module';
+import { RegularUserModule } from './regular-user/regular-user-module';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { GuestModule } from './guest/guest.module';
     ModeratorModule,
     MatTableModule,
     GuestModule,
+    RegularUserModule,
     LoginModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],

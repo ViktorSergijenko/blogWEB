@@ -16,13 +16,13 @@ const routes: Routes = [
           redirectTo: 'dashboard/best',
           pathMatch: 'full',
           canActivate: [AuthenticationGuard],
-          data: { title: extract('Dashboard'), permittedRole: extract('RegularUser')}
+          data: { title: extract('Dashboard'), permittedRole: extract('Guest')}
         },
         {
           path: 'dashboard/:sort',
           component: GuestDashboardComponent,
           canActivate: [AuthenticationGuard],
-          data: { title: extract('Dashboard'), permittedRole: extract('RegularUser')}
+          data: { title: extract('Dashboard'), permittedRole: extract('Guest')}
         },
       ]
     }

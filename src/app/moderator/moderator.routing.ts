@@ -8,7 +8,7 @@ import { extract, AuthenticationGuard } from '@app/core';
 const routes: Routes = [
   Shell.childRoutes([
     {
-      path: 'Moderator',
+      path: 'moderator',
       component: ModeratorComponent,
       children: [
         {

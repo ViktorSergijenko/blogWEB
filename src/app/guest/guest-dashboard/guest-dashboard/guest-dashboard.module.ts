@@ -6,7 +6,6 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MaterialModule } from '@app/material.module';
-import { PostModalComponent } from '@app/guest/post-modal-window/post-modal/post-modal.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 
@@ -14,7 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
-  declarations: [GuestDashboardComponent,PostModalComponent],
+  declarations: [GuestDashboardComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -25,7 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatDialogModule
   ],
-  entryComponents: [PostModalComponent]
+  entryComponents: []
   
 })
 export class GuestDashboardModule { }
