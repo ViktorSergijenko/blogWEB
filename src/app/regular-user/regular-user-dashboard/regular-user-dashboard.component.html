@@ -18,8 +18,14 @@
          </mat-card-content>
          <mat-card-actions>
            <div class="actions-row">
-             <mat-icon [matBadge]=post.likes.length matBadgeColor="warn">favorite</mat-icon>
-             <mat-icon>more</mat-icon>
+             <mat-icon [matBadge]=post.likes.length matBadgeColor="warn" (click)="likePost(post)">favorite</mat-icon>
+             <mat-icon (click)="postDetails(post.id)">more</mat-icon>
+             <button (click)="editPost(post)" *ngIf="post.userId == userId" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon">
+              <mat-icon >create</mat-icon>
+            </button>
+            <button (click)="deletePost(post.id)" *ngIf="post.userId == userId" mat-icon-button color="warn" aria-label="Example icon-button with a heart icon">
+              <mat-icon >speaker_notes_off</mat-icon>
+            </button>
            </div>
          </mat-card-actions>
        </mat-card>

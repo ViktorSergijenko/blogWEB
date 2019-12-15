@@ -29,8 +29,8 @@ export class PostService {
      * @returns {Observable<Post[]>}
      * @memberof PostService
      */
-    getPosts(): Observable<Post[]> {
-        return this.http.get<Post[]>(this.getEndpointUrl());
+    getPosts(sort: string): Observable<Post[]> {
+        return this.http.get<Post[]>(this.getEndpointUrl() + `/${sort}`);
     }
 
      /**

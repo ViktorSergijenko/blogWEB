@@ -17,10 +17,36 @@
           </a>
           <mat-divider></mat-divider>
         </mat-list>
-        <mat-list *ngIf="userRole === 'Manager'">
+        <mat-list *ngIf="userRole === 'Moderator'">
           <mat-divider></mat-divider>
-          <a mat-list-item routerLink="/manager/dashboard" routerLinkActive="active" (click)="sidenav.close()">
-            <span translate>Dashboard</span>
+          <a mat-list-item routerLink="/moderator/dashboard/best" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>Best</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/moderator/dashboard/new" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>Best</span>
+          </a>
+          <mat-divider></mat-divider>
+        </mat-list>
+        <mat-list *ngIf="userRole === 'RegularUser'">
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/regular-user/dashboard/best" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>best</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/regular-user/dashboard/new" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>new</span>
+          </a>
+          <mat-divider></mat-divider>
+        </mat-list>
+        <mat-list *ngIf="userRole === 'Guest'">
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/guest/dashboard/new" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>new</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/guest/dashboard/best" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>Best</span>
           </a>
           <mat-divider></mat-divider>
         </mat-list>

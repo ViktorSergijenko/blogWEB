@@ -13,6 +13,10 @@ import { finalize } from 'rxjs/operators';
 })
 export class PostModalComponent implements OnInit {
   postForm: FormGroup;
+  edit: boolean;
+  loading: boolean;
+  userId: string;
+  fullname: string;
 
   constructor(
     public dialogRef: MatDialogRef<PostModalComponent>,
@@ -22,11 +26,31 @@ export class PostModalComponent implements OnInit {
     private postService: PostService,
     @Inject(MAT_DIALOG_DATA) public data: Post) {
       this.createLoginForm();
+      this.userId = this.credentialsService.credentials.id;
+      this.fullname= this.credentialsService.credentials.fullName;
 
     }
 
   ngOnInit() {
-    this.initializeFormWithValues();
+    if (this.data) {
+      console.log('asd');
+      this.getPost();
+    } else {
+      console.log('asd');
+      this.initializeFormWithValues();
+      
+    }
+  }
+
+  getPost() {
+    this.loading = true;
+    this.postService.getCatalogByiD(this.data.id)
+    .pipe(finalize(() => {
+      this.loading = false;
+    }))
+    .subscribe(post => {
+      this.postForm.patchValue({imageBase64: post.imageBase64, userId: this.userId,authorFullName: this.fullname,id: post.id, text: post.text, title: post.title });
+    });
   }
 
   onNoClick(): void {
@@ -51,23 +75,26 @@ export class PostModalComponent implements OnInit {
     )
     .subscribe(value => {
       this.data = value;
+      console.log(value);
       this.dialogRef.close(this.data);
     });
   }
 
   private createLoginForm() {
     this.postForm = this.formBuilder.group({
-      title: ['', Validators.required, Validators.email],
+      title: ['', Validators.required],
       authorFullName: ['', Validators.required],
       text: ['', Validators.required],
       userId: ['', Validators.required],
       imageBase64: ['', Validators.required],
+      id:['']
     });
   }
 
   private initializeFormWithValues() {
-    this.postForm.patchValue({ authorFullName: this.credentialsService.credentials.fullName });
-    this.postForm.patchValue({ userId: this.credentialsService.credentials.id });
+      this.postForm.patchValue({ authorFullName: this.fullname });
+      this.postForm.patchValue({ userId: this.userId });
+    
   }
 
 }

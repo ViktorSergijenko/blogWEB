@@ -1,6 +1,7 @@
 import { BaseEntity } from './base-entity.model';
 import { Like } from './like.model';
 import { User } from './user.model';
+import { Comment } from './comment.model';
 
 export class Post extends BaseEntity {
     title: string;

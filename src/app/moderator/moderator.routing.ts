@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ModeratorComponent } from './moderator.component';
 import { ModeratorDashboardComponent } from './moderator-dashboard/moderator-dashboard.component';
 import { extract, AuthenticationGuard } from '@app/core';
+import { ModeratorPostDetailsComponent } from './moderator-post-details/moderator-post-details.component';
 
 const routes: Routes = [
   Shell.childRoutes([
@@ -13,14 +14,22 @@ const routes: Routes = [
       children: [
         {
           path: '',
-          redirectTo: 'dashboard',
-          pathMatch: 'full'
+          redirectTo: 'dashboard/best',
+          pathMatch: 'full',
+          canActivate: [AuthenticationGuard],
+          data: { title: extract('posts'), permittedRole: extract('Moderator')}
         },
         {
-          path: 'dashboard',
+          path: 'dashboard/:sort',
           component: ModeratorDashboardComponent,
           canActivate: [AuthenticationGuard],
-          data: { title: extract('Dashboard'), permittedRole: extract('Moderator') }
+          data: { title: extract('posts'), permittedRole: extract('Moderator') }
+        },
+        {
+          path: 'dashboard/post/:id',
+          component: ModeratorPostDetailsComponent,
+          canActivate: [AuthenticationGuard],
+          data: { title: extract('post'), permittedRole: extract('Moderator')}
         }
       ]
     }

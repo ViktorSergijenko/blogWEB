@@ -33,7 +33,7 @@ export class GuestDashboardComponent implements OnInit {
 
   private getPosts() {
     this.isLoading = true;
-    this.postService.getPosts()
+    this.postService.getPosts(this.sortOption)
     .pipe(
       finalize(() => {
         this.isLoading = false;

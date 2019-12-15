@@ -11,6 +11,9 @@ import { MatDialogModule, MatFormFieldModule, MatSnackBarModule, MatCardModule, 
 import { MaterialModule } from '@app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { LikeService } from '@app/services/like-service';
+import { RegularUserPostDetailsComponent } from './regular-user-post-details/regular-user-post-details.component';
+import { CommentService } from '@app/services/comment-service';
 
 @NgModule({
     imports: [
@@ -28,8 +31,8 @@ import { TranslateModule } from '@ngx-translate/core';
         MatDialogModule,
     ],
     exports: [],
-    declarations: [RegularUserComponent, RegularUserDashboardComponent, PostModalComponent],
-    providers: [RegularUserService],
+    declarations: [RegularUserComponent, RegularUserDashboardComponent, PostModalComponent, RegularUserPostDetailsComponent],
+    providers: [RegularUserService, LikeService, CommentService],
     entryComponents: [PostModalComponent]
 })
 export class RegularUserModule { }

@@ -11,10 +11,6 @@
       <mat-icon>home</mat-icon>
       <span translate>Dashboard</span>
     </button>
-    <button mat-button routerLink="/global/regions" routerLinkActive="active">
-      <mat-icon>info</mat-icon>
-      <span translate>Regions</span>
-    </button>
     <button mat-button routerLink="/global/user-table" routerLinkActive="active">
       <mat-icon>accessibility</mat-icon>
       <span translate>User table</span>
@@ -22,23 +18,29 @@
   </div>
   <div fxHide.lt-md *ngIf="userRole === 'Moderator'">
     <a class="brand" translate>APP_NAME</a>
-    <button mat-button routerLink="/manager/dashboard" routerLinkActive="active">
-      <mat-icon>home</mat-icon>
-      <span translate>Dashboard</span>
+    <button mat-button routerLink="/moderator/dashboard/best" routerLinkActive="active">
+      <span translate>Best</span>
+    </button>
+    <button mat-button routerLink="/moderator/dashboard/new" routerLinkActive="active">
+      <span translate>New</span>
     </button>
   </div>
   <div fxHide.lt-md *ngIf="userRole === 'RegularUser'">
     <a class="brand" translate>APP_NAME</a>
-    <button mat-button routerLink="/manager/dashboard" routerLinkActive="active">
-      <mat-icon>home</mat-icon>
-      <span translate>Dashboard</span>
+    <button mat-button routerLink="/regular-user/dashboard/best" routerLinkActive="active">
+      <span translate>Best</span>
+    </button>
+    <button mat-button routerLink="/regular-user/dashboard/new" routerLinkActive="active">
+      <span translate>New</span>
     </button>
   </div>
-  <div fxHide.lt-md *ngIf="userRole === 'guest'">
+  <div fxHide.lt-md *ngIf="userRole === 'Guest'">
     <a class="brand" translate>APP_NAME</a>
-    <button mat-button routerLink="/guest/dashboard" routerLinkActive="active">
-      <mat-icon>home</mat-icon>
-      <span translate>Dashboard</span>
+    <button mat-button routerLink="/guest/dashboard/best" routerLinkActive="active">
+      <span translate>Best</span>
+    </button>
+    <button mat-button routerLink="/guest/dashboard/new" routerLinkActive="active">
+      <span translate>New</span>
     </button>
   </div>
 

@@ -1,7 +1,5 @@
 
-<h1 mat-dialog-title>Hi {{data | json}}</h1>
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
       <form [formGroup]="postForm" novalidate>
       <div class="inputs">
         <mat-form-field>
@@ -13,8 +11,8 @@
           required>
         </mat-form-field>
       
-        <mat-form-field>
-          <textarea matInput
+        <mat-form-field >
+          <textarea style="width: 100%;" matInput
           formControlName="text"
           autocomplete="content"
           [placeholder]="'Content' | translate"
@@ -30,7 +28,6 @@
         (change)="onFileSelected($event)"
       />
       </div>
-      {{postForm.value | json}}
     </form>
 </div>
 <div mat-dialog-actions>

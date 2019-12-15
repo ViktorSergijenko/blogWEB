@@ -7,8 +7,7 @@ import { Comment } from '@app/models/comment.model';
 @Injectable({
     providedIn: 'root'
 })
-
-export class LikeService {
+export class  CommentService{
     constructor(
         private http: HttpClient
     ) { }
@@ -20,7 +19,7 @@ export class LikeService {
     * @memberof PostService
     */
    getEndpointUrl(): string {
-    return `${environment.apiUrl}like`;
+    return `${environment.apiUrl}comment`;
  }
 
  /**
@@ -29,8 +28,8 @@ export class LikeService {
      * @returns {Observable<Post[]>}
      * @memberof PostService
      */
-    getPosts(): Observable<Comment[]> {
-        return this.http.get<Comment[]>(this.getEndpointUrl());
+    getPosts(id: string): Observable<Comment[]> {
+        return this.http.get<Comment[]>(this.getEndpointUrl() + `/post/${id}`);
     }
 
      /**

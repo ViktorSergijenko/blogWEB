@@ -1,0 +1,48 @@
+.spinner-block {
+    display: flex;
+    justify-content: center;
+      padding: 6rem 7rem !important;
+  }
+  
+  .post-block {
+    display: flex;
+    flex-basis: 100%;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 20px;
+  }
+  .global-admin-content {
+    padding: 3rem 2rem !important;
+  }
+  body {
+    padding: 3rem 2rem !important;
+  }
+
+  .postText {
+    display: flex;
+    flex-basis: 100%;
+    p {
+      word-break: break-all;
+    }
+  }
+  
+  .actions-row {
+    display: flex;
+    justify-content: space-around;
+  }
+  .comment-container {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 100%;
+      margin: 20px;
+      .comment-add-text {
+          display: flex;
+          justify-content: center;
+          flex-basis: 100%;
+      }
+      .comment-add-button {
+          display: flex;
+          justify-content: center;
+          flex-basis: 100%;
+      }
+  }

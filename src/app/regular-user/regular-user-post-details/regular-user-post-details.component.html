@@ -1,0 +1,66 @@
+<div class="post-block" *ngIf="post">
+ 
+    <mat-card id="comment-field">
+        <mat-card-header>
+          <img mat-card-avatar [src]="post.user.avatarImageBase64" *ngIf="post.user.avatarImageBase64">
+          <mat-card-title style="word-break: break-all;">{{post.title}}</mat-card-title>
+          <mat-card-subtitle style="word-break: break-all;">{{post.authorFullName}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="post.imageBase64" *ngIf="post.imageBase64">
+        <mat-card-content>
+          <div class="postText">
+            <p>{{post.text}}</p>
+          </div>
+        </mat-card-content>
+        <mat-card-footer>
+            
+            <div class="comment-container">
+                <div class="comment-add-text">
+                    <form [formGroup]="commentForm" novalidate>
+                    <mat-form-field>
+                       <textarea 
+                       matInput
+                       formControlName="text"
+                       autocomplete="text"
+                       [placeholder]="'Leave your comment' | translate"></textarea>
+                       </mat-form-field>
+                    </form>
+                </div>
+                <div class="comment-add-button">
+                    <button mat-raised-button color="primary" (click)="addNewComment()">Add/edit comment</button>
+                </div>
+            </div>
+        </mat-card-footer>
+      </mat-card>
+  </div>
+  <div *ngIf="comments.length > 0">
+
+    <div class="post-block" *ngFor="let comment of comments"> 
+      <mat-card style="padding-top: 20px !important;" *ngIf="comments.length > 0">
+        <mat-card-header>
+            <img mat-card-avatar [src]="comment.user.avatarImageBase64" *ngIf="comment.user.avatarImageBase64">
+          <mat-card-title style="word-break: break-all;">{{comment.user.userName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="postText">
+            <p>{{comment.text}}</p>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="actions-row">
+            <button (click)="deleteComment(comment.id)" *ngIf="comment.userId == userId" mat-icon-button color="warn" aria-label="Example icon-button with a heart icon">
+              <mat-icon >speaker_notes_off</mat-icon>
+            </button>
+            <button (click)="editComment(comment)" *ngIf="comment.userId == userId" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon">
+              <mat-icon >create</mat-icon>
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+
+<div class="spinner-block" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
