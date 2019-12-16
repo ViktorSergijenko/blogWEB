@@ -147,7 +147,7 @@ export class LoginComponent implements OnInit, OnDestroy {
               userProfile.token = credentials.token;
               this.credentialsService.setCredentials(userProfile, this.loginForm.value.remember);
               log.debug(`${userProfile.roleName} successfully logged in`);
-              this.router.navigate([this.route.snapshot.queryParams.redirect || '/regularUser'], { replaceUrl: true });
+              this.router.navigate([this.route.snapshot.queryParams.redirect || '/regular-user'], { replaceUrl: true });
 
             });
         },

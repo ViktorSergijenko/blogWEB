@@ -16,7 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GlobalAdminRoutingModule,
     GlobalAdminUserTableModule,
     GlobaAdminDashboardModule,
-    GlobalAdminRegionsModule
+    GlobalAdminRegionsModule,
+    
   ]
 })
 export class GlobalAdminModule {}

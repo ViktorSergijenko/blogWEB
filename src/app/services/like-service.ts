@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@env/environment';
+import { environment } from '@env/environment.prod';
 import { Observable } from 'rxjs';
 import { Like } from '@app/models/like.model';
 
@@ -20,7 +20,7 @@ export class LikeService {
     * @memberof PostService
     */
    getEndpointUrl(): string {
-    return `${environment.apiUrl}like`;
+    return `${environment.serverUrl}like`;
  }
 
  /**

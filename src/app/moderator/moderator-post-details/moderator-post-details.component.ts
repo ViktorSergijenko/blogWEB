@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Post } from '@app/models/post.model';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,7 +15,7 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './moderator-post-details.component.html',
   styleUrls: ['./moderator-post-details.component.scss']
 })
-export class ModeratorPostDetailsComponent implements OnInit {
+export class ModeratorPostDetailsComponent implements OnInit, AfterViewInit {
   post: Post;
   comments: Comment[] = []
   isLoading: boolean;
@@ -32,9 +32,15 @@ export class ModeratorPostDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private credentialsService: CredentialsService,
     private commentService: CommentService
-  ) { }
+  ) {
+    this.createCommentForm();
+   }
 
   ngOnInit() {
+    this.userId = this.credentialsService.credentials.id;
+    this.getPost();
+    this.getComments();
+    this.commentForm.patchValue({ userId: this.credentialsService.credentials.id });
   }
   ngAfterViewInit() {
     window.document.getElementById('comment-field').scrollIntoView();

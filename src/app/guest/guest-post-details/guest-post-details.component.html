@@ -1,0 +1,37 @@
+<div class="post-block" *ngIf="post">
+ 
+    <mat-card id="comment-field">
+        <mat-card-header>
+          <img mat-card-avatar [src]="post.user.avatarImageBase64" *ngIf="post.user.avatarImageBase64">
+          <mat-card-title style="word-break: break-all;">{{post.title}}</mat-card-title>
+          <mat-card-subtitle style="word-break: break-all;">{{post.authorFullName}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="post.imageBase64" *ngIf="post.imageBase64">
+        <mat-card-content>
+          <div class="postText">
+            <p>{{post.text}}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+  </div>
+  <div *ngIf="comments.length > 0">
+
+    <div class="post-block" *ngFor="let comment of comments"> 
+      <mat-card style="padding-top: 20px !important;" *ngIf="comments.length > 0">
+        <mat-card-header>
+            <img mat-card-avatar [src]="comment.user.avatarImageBase64" *ngIf="comment.user.avatarImageBase64">
+          <mat-card-title style="word-break: break-all;">{{comment.user.userName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="postText">
+            <p>{{comment.text}}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+
+<div class="spinner-block" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>

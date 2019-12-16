@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '@env/environment';
+import { environment } from '@env/environment.prod';
 import { Observable } from 'rxjs';
 import { Post } from '@app/models/post.model';
 
@@ -20,7 +20,7 @@ export class PostService {
     * @memberof PostService
     */
     getEndpointUrl(): string {
-        return `${environment.apiUrl}post`;
+        return `${environment.serverUrl}post`;
     }
 
     /**

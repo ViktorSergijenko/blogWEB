@@ -23,3 +23,24 @@
 body {
   padding: 3rem 2rem !important;
 }
+
+.button-first-row {
+    display: flex;
+    flex-basis: 100%;
+    .post-button {
+        width: 100%;
+    }
+}
+
+.postText {
+  display: flex;
+  flex-basis: 100%;
+  p {
+    word-break: break-all;
+  }
+}
+
+.actions-row {
+  display: flex;
+  justify-content: space-around;
+}

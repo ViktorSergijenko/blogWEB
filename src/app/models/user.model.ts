@@ -19,4 +19,5 @@ export class User extends BaseEntity {
     email: string;
     password: string;
     comments: Comment[];
+    roleName: string;
 }

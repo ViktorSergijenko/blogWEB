@@ -15,8 +15,6 @@ export class AuthenticationGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.credentialsService.isAuthenticated()) {
       let role = route.data['permittedRole'] as string;
-      console.log(role);
-      console.log(this.credentialsService.credentials.roleName);
       if (role) {
         if (this.credentialsService.credentials.roleName === role) {
           return true;
@@ -29,7 +27,7 @@ export class AuthenticationGuard implements CanActivate {
               this.router.navigate([this.route.snapshot.queryParams.redirect || '/moderator'], { replaceUrl: true });
               break;
               case 'RegularUser':
-              this.router.navigate([this.route.snapshot.queryParams.redirect || '/regularUser'], { replaceUrl: true });
+              this.router.navigate([this.route.snapshot.queryParams.redirect || '/regular-user'], { replaceUrl: true });
               break;
               case 'guest':
               this.router.navigate([this.route.snapshot.queryParams.redirect || '/guest'], { replaceUrl: true });

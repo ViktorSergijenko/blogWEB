@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@env/environment';
+import { environment } from '@env/environment.prod';
 import { Observable } from 'rxjs';
 import { Comment } from '@app/models/comment.model';
 
@@ -19,7 +19,7 @@ export class  CommentService{
     * @memberof PostService
     */
    getEndpointUrl(): string {
-    return `${environment.apiUrl}comment`;
+    return `${environment.serverUrl}comment`;
  }
 
  /**
